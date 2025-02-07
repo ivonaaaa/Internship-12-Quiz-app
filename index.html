@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia Quiz</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Trivia Quiz</h1>
+      <form id="quiz-form">
+        <label for="category">Select Category:</label>
+        <select id="category">
+          <option value="">Any Category</option>
+          <option value="27">Animals</option>
+          <option value="26">Celebrities</option>
+          <option value="25">Arts</option>
+          <option value="24">Politics</option>
+          <option value="23">History</option>
+          <option value="22">Geography</option>
+          <option value="21">Sports</option>
+          <option value="20">Mythology</option>
+        </select>
+
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+          <option value="">Any Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+
+        <label for="type">Select Question Type:</label>
+        <select id="type">
+          <option value="">Any Type</option>
+          <option value="multiple">Multiple Choice</option>
+          <option value="boolean">True / False</option>
+        </select>
+
+        <button type="submit">Start Quiz</button>
+      </form>
+
+      <div id="quiz-container"></div>
+    </div>
+
+    <script type="module" src="modules/index.js"></script>
+  </body>
+</html>
