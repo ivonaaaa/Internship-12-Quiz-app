@@ -48,6 +48,11 @@ button:hover {
   background-color: #0056b3;
 }
 
+#start-quiz-btn {
+  display: none;
+  margin: 30px auto 0;
+}
+
 #quiz-container {
   margin-top: 20px;
   text-align: left;
