@@ -10,7 +10,12 @@ async function fetchQuestions(category, difficulty, type) {
   const params = new URLSearchParams(queryParams);
 
   return fetch(`${baseUrl}?${params.toString()}`)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.response_code !== 0) {
         throw new Error("No questions available for the selected parameters.");

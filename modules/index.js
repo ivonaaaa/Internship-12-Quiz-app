@@ -1,4 +1,5 @@
 import { fetchQuestions } from "./api.js";
+import { startQuiz } from "./quiz.js";
 
 document
   .getElementById("quiz-form")
@@ -18,7 +19,7 @@ document
         .getElementById("start-quiz-btn")
         .addEventListener("click", () => {
           document.getElementById("start-quiz-btn").style.display = "none";
-          //ode pozvat kasnije questions i file za kviz?
+          startQuiz(questions);
         });
     } catch (error) {
       alert("An error occurred while fetching questions. Please try again.");
