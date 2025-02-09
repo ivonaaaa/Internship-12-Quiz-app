@@ -80,15 +80,15 @@ function getFeedbackMessage(score) {
   switch (true) {
     case score === 5:
       return "You got all answers correct! Were you cheating?";
-    case (score = 4):
+    case score === 4:
       return "So close... I bet that one wrong answer irritates you now, doesn't it?";
-    case (score = 3):
+    case score === 3:
       return "Right in the middle - just enough to not be impressive, but also not embarrassing. Congrats, I guess.";
-    case (score = 2):
+    case score === 2:
       return "Well... at least you tried. Next time try blindly guessing, the results are probably gonna be better.";
-    case (score = 1):
+    case score === 1:
       return "Not really good at quizes huh?";
-    case (score = 0):
+    case score === 0:
       return "Maybe read a book or two before your next quiz attempt?";
   }
 }
