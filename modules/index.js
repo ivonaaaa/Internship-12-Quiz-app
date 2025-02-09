@@ -1,5 +1,6 @@
 import { fetchQuestions } from "./api.js";
 import { startQuiz } from "./quiz.js";
+import { displayQuizHistory } from "./ui.js";
 
 document
   .getElementById("quiz-form")
@@ -25,3 +26,7 @@ document
       alert("An error occurred while fetching questions. Please try again.");
     }
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+  displayQuizHistory();
+});

@@ -9,17 +9,23 @@ import { startTimer, stopTimer } from "./timer.js";
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
+let selectedCategory = "";
+let selectedDifficulty = "";
 
-function startQuiz(fetchedQuestions) {
+function startQuiz(fetchedQuestions, category, difficulty) {
   questions = fetchedQuestions;
   currentQuestionIndex = 0;
   score = 0;
+  selectedCategory = category;
+  selectedDifficulty = difficulty;
+
   displayQuestion();
 }
 
 function displayQuestion() {
   if (currentQuestionIndex >= questions.length) {
     showFinalResult(score, questions.length);
+    saveQuizResult(score, selectedCategory, selectedDifficulty);
     return;
   }
 
@@ -57,6 +63,20 @@ function handleTimeout(correctAnswer) {
     currentQuestionIndex++;
     displayQuestion();
   }, 2000);
+}
+
+function saveQuizResult(score, category, difficulty) {
+  const quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+
+  const result = {
+    score,
+    category,
+    difficulty,
+    date: new Date().toLocaleString(),
+  };
+
+  quizHistory.push(result);
+  localStorage.setItem("quizHistory", JSON.stringify(quizHistory));
 }
 
 export { startQuiz };

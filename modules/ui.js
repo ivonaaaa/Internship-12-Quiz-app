@@ -72,6 +72,8 @@ function showFinalResult(score, totalQuestions) {
   resultElement.appendChild(restartButton);
 
   quizContainer.appendChild(resultElement);
+
+  displayQuizHistory();
 }
 
 function getFeedbackMessage(score) {
@@ -86,9 +88,44 @@ function getFeedbackMessage(score) {
       return "Well... at least you tried. Next time try blindly guessing, the results are probably gonna be better.";
     case (score = 1):
       return "Not really good at quizes huh?";
-    default:
+    case (score = 0):
       return "Maybe read a book or two before your next quiz attempt?";
   }
+}
+
+function displayQuizHistory() {
+  const quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+
+  const historyContainer = document.getElementById("quiz-history");
+  historyContainer.innerHTML = "";
+
+  if (quizHistory.length === 0) {
+    historyContainer.innerHTML = "<p>No previous quizzes found.</p>";
+    return;
+  }
+
+  quizHistory.forEach((result) => {
+    const resultElement = document.createElement("div");
+    resultElement.classList.add("quiz-result");
+
+    const scoreText = document.createElement("p");
+    scoreText.textContent = `Score: ${result.score}`;
+    resultElement.appendChild(scoreText);
+
+    const categoryText = document.createElement("p");
+    categoryText.textContent = `Category: ${result.category}`;
+    resultElement.appendChild(categoryText);
+
+    const difficultyText = document.createElement("p");
+    difficultyText.textContent = `Difficulty: ${result.difficulty}`;
+    resultElement.appendChild(difficultyText);
+
+    const dateText = document.createElement("p");
+    dateText.textContent = `Date: ${result.date}`;
+    resultElement.appendChild(dateText);
+
+    historyContainer.appendChild(resultElement);
+  });
 }
 
 function shuffleArray(array) {
@@ -98,4 +135,10 @@ function shuffleArray(array) {
   }
 }
 
-export { renderQuestion, highlightAnswer, disableAnswers, showFinalResult };
+export {
+  renderQuestion,
+  highlightAnswer,
+  disableAnswers,
+  showFinalResult,
+  displayQuizHistory,
+};
