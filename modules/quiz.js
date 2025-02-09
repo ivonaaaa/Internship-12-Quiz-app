@@ -1,4 +1,9 @@
-import { renderQuestion, highlightAnswer, disableAnswers } from "./ui.js";
+import {
+  renderQuestion,
+  highlightAnswer,
+  disableAnswers,
+  showFinalResult,
+} from "./ui.js";
 import { startTimer, stopTimer } from "./timer.js";
 
 let questions = [];
@@ -14,8 +19,7 @@ function startQuiz(fetchedQuestions) {
 
 function displayQuestion() {
   if (currentQuestionIndex >= questions.length) {
-    alert(`Your score: ${score}/${questions.length}`);
-    location.reload();
+    showFinalResult(score, questions.length);
     return;
   }
 

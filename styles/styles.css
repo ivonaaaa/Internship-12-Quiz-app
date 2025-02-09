@@ -88,3 +88,12 @@ button:hover {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.score-text {
+  margin: 30px auto 0;
+  font-size: 18px;
+}
+
+.restart-btn {
+  margin-left: 90px;
+}
